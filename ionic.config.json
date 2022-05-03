@@ -1,5 +1,7 @@
 {
   "name": "blueberry",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

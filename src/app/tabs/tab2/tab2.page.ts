@@ -20,6 +20,9 @@ export class Tab2Page implements OnInit {
     console.log('getHashTagData function called');
     this.userService.getHashTagDataApi().subscribe((res: any)=>{
       console.log('get data');
+      res.data.forEach(element => {
+        element.message = element.message.replaceAll('daikin','#');
+      });
       console.log('response',res.data);
 
       this.hashTagData=res.data;
