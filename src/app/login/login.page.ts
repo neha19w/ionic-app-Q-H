@@ -9,26 +9,26 @@ import { AuthService } from '../api/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  loginForm = new FormGroup({
+  loginFormValues = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
+    type:new FormControl('',[Validators.required])
   });
 
   constructor(private loginservice: AuthService, private routes: Router) {}
 
   ngOnInit() {}
 
-  loginFormData() {
-    console.log('this.loginForm.value',this.loginForm.value);
-  }
+  // loginFormData() {
+  //   console.log('this.loginForm.value',this.loginForm.value);
+  // }
 
-  loginSubmit() {
-    console.log('loginSubmit function called');
+  onSubmit() {
+    console.log('onSubmit function called');
     this.loginservice
-      .loginData(this.loginForm.value)
+      .onSubmitloginApiData(this.loginFormValues.value)
       .subscribe((response: any) => {
-        console.log('response');
-        console.log(response);
+        console.log('response token',response);
         this.loginservice.saveUserDataLocal(response.data);
         this.routes.navigate(['/tabs/tab1']);
       });

@@ -12,7 +12,7 @@ export class OuterGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.loginservice.isUserLogin()) {
-      this.router.navigateByUrl('/tabs');
+      this.router.navigateByUrl('/tabs/tab1');
       return false;
     } else {
       return true;

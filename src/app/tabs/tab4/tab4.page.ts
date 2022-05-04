@@ -13,9 +13,11 @@ export class Tab4Page implements OnInit {
   ngOnInit() {
   }
 
-  getAllData(){
+  getBirthdayData(){
     console.log('getAllData function called');
-    this.router.navigate(['/tabs/tab1']);
+    this.router.navigate(['/birthday']);
   }
-
+  getCuteData(){
+    this.router.navigate(['/cute']);
+  }
 }

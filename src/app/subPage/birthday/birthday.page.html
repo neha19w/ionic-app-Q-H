@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Birthday Quotes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-padding">
+      <!-- <ion-col size="12"  class="d-flex-j-sb-a-end"> -->
+      <div  class="heading">
+        <label (click)="backToTab4()">Back</label><label> &nbsp;>&nbsp;</label><label><b>Birthday</b> </label>
+      </div>
+      <!-- </ion-col> -->
+
+      <ion-col class="mr-t-15 productCard mb-5" size="12" *ngFor="let qd of quotesData" >
+        <div class="productDiv paddingproduct">
+          <ion-row>
+            <ion-col size="6" class="d-flex-cen">
+              <img src="/assets/user.webp" width="20%">
+            </ion-col>
+            <ion-col size="4" offset="1">
+              <ion-buttons class="addsubbutton">
+
+                <img src="assets/image-line.svg" width="30%" height="100%" class="photos">
+
+                <img src="assets/scan.png" width="25%" height="100%" class="photos">
+
+                <img src="assets/flag.png" width="25%" height="100%" class="photos">
+
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <!-- <ion-item> -->
+          <div>
+            <ion-row class="d-flex-cen">
+              <ion-col class="bottomDiv" size="11" >
+                <p class="text_main">{{qd.message}}</p>
+              </ion-col>
+              <ion-col size="12">
+                <ion-row>
+                  <ion-col size="5" class="d-flex-cen">
+                    <p class="text">{{qd.source}}</p>
+                  </ion-col>
+                  <ion-col size="5" offset="1">
+                    <p class="text">{{qd.date_time}}</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="12">
+                    <div>
+                      <ion-row>
+                        <ion-col size="5" class="d-flex-cen">
+                          <img src="assets/like.png" width="15%" class="photos2">
+                          <label class="text">{{qd.likes}}</label>
+                          <img src="assets/save.png" width="15%" class="photos2">
+                          <label class="text">{{qd.bookmark}}</label>
+                        </ion-col>
+
+                        <ion-col size="5" offset="1">
+                          <label class="text">{{qd.copied}}</label>
+                          <label class="text">copies</label>
+                          <img src="assets/copy.png" width="15%" class="photos2">
+                        </ion-col>
+                      </ion-row>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+
+            </ion-row>
+          </div>
+        <!-- </ion-item> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

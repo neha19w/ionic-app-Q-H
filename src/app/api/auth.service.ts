@@ -7,9 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-
   userData: any = {};
-  localUserDataKey = 'userData';
+  localUserDataKey = 'allUserData';
 
   constructor(private http: HttpClient, private router: Router) {
     this.getUserData();
@@ -20,8 +19,8 @@ export class AuthService {
     headers: new HttpHeaders({
       'content-Type': 'application/json',
       'access-Control-Allow-Origin': '*',
-      'access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE'
-    })
+      'access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+    }),
   };
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -30,6 +29,7 @@ export class AuthService {
   saveUserDataLocal(value: any) {
     if (value) {
       const str = JSON.stringify(value);
+      console.log('str, JSON.stringify(value)--', str);
       localStorage.setItem(this.localUserDataKey, str);
       this.getUserData();
       console.log('this.getUserData();', this.getUserData());
@@ -37,8 +37,7 @@ export class AuthService {
   }
 
   isUserLogin() {
-    console.log('isUserLogin called.');
-
+    console.log('isUserLogin called. this.userData - ', this.userData);
     return Object.keys(this.userData).length ? true : false;
   }
 
@@ -46,27 +45,27 @@ export class AuthService {
     const data = localStorage.getItem(this.localUserDataKey);
     if (data) {
       const obj = JSON.parse(data);
+      console.log('obj JSON.parse(data)-- ', obj);
       this.userData = obj;
+      console.log('obj this.userData JSON.parse(data)-- ', this.userData);
       return obj;
     } else {
       return {};
     }
   }
 
-  loginData(data: any): Observable<any> {
-    // return this.http.post(`https://developer.hackerkernel.com/demo/shreesaidarshan/public/api`, data);
-    // return this.http.post(`https://raphael-dashboard.hackerkernel.com/auth/login`, data);
-    return this.http.post(`https://reqres.in/api/login`,data);
+  onSubmitloginApiData(data: any): Observable<any> {
+    return this.http.post(`http://165.22.222.20/demo/shreesaidarshan/public/api/user-login`, data);
+    // return this.http.post(
+    //   `https://developer.hackerkernel.com/demo/shreesaidarshan/public/api/user-login`,
+    //   data
+    // );
+    // return this.http.post(`https://reqres.in/api/login`,data);
   }
 
   logout() {
+    localStorage.removeItem(this.localUserDataKey);
     this.userData = {};
-    localStorage.clear();
-
-    setTimeout(() =>{
-      this.router.navigateByUrl('/login');
-    },500);
-
-
+    this.router.navigateByUrl('/login');
   }
 }

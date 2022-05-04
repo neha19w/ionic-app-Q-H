@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
 
   {
@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
     canActivate:[OuterGuard]
+  },
+  {
+    path: 'birthday',
+    loadChildren: () => import('./subPage/birthday/birthday.module').then( m => m.BirthdayPageModule)
+  },
+  {
+    path: 'cute',
+    loadChildren: () => import('./subPage/cute/cute.module').then( m => m.CutePageModule)
   },
 
 
