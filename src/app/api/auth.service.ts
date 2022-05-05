@@ -55,7 +55,10 @@ export class AuthService {
   }
 
   onSubmitloginApiData(data: any): Observable<any> {
-    return this.http.post(`http://165.22.222.20/demo/shreesaidarshan/public/api/user-login`, data);
+    return this.http.post(
+      `http://165.22.222.20/demo/shreesaidarshan/public/api/user-login`,
+      data
+    );
     // return this.http.post(
     //   `https://developer.hackerkernel.com/demo/shreesaidarshan/public/api/user-login`,
     //   data
@@ -68,4 +71,6 @@ export class AuthService {
     this.userData = {};
     this.router.navigateByUrl('/login');
   }
+
+
 }

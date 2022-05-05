@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab3</ion-title>
+    <ion-searchbar (click)="getProductList()" showCancelButton="focus" placeholder="search..."></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-list class="proList" *ngFor="let pd of productList;let i = index">
+    <ion-item>
+      <ion-label>Sno.</ion-label>
+      <p>{{i+1}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product Name</ion-label>
+      <p>{{pd.product_name}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Packing Type</ion-label>
+      <p>{{pd.product_detail}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <p>{{pd.category}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nature</ion-label>
+      <p>{{pd.nature?pd.nature.name:''}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Actions</ion-label>
+      <p>1</p>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
